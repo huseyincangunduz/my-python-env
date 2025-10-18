@@ -1,5 +1,6 @@
 
 #!/bin/bash
+# DİKKAT - Bunu source ./activate-env.sh olarak çalıştırın
 
 # virtualenv kurulu olup olmadığını kontrol et
 check_virtualenv() {
