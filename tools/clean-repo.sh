@@ -8,6 +8,15 @@ if [[ "$CONFIRM" != "e" && "$CONFIRM" != "E" ]]; then
     echo "❌ İşlem iptal edildi."
     exit 1
 fi
+
+read -p "TEKRARDAN UYARILIYORSUNUZ: Bu işlem repo içindeki tüm dosyaları silecek! 
+ÖNEMLİ DEĞİŞİKLİKLER VARSA YA DA REPOSITORY GITHUB GİBİ BİR YERE PUSHLANMADIYSA TÜM PROJE ÇÖP OLACAK! 
+Devam etmek istiyor musunuz? (e/h): " CONFIRM
+if [[ "$CONFIRM" != "e" && "$CONFIRM" != "E" ]]; then
+    echo "❌ İşlem iptal edildi."
+    exit 1
+fi
+
 echo "🧹 Repo temizleniyor..."
 # gereksiz dosyaları sil
 rm -rf __pycache__
