@@ -3,6 +3,7 @@
 # DİKKAT - Bunu source ./activate-env.sh olarak çalıştırın
 
 # virtualenv kurulu olup olmadığını kontrol et
+FIRST_INSTALL=0
 check_virtualenv() {
     if ! command -v virtualenv &> /dev/null; then
         echo "❌ UYARI: virtualenv kurulu değil!"
@@ -27,6 +28,7 @@ fi
 if [ ! -d "_environment" ]; then
     echo "🔨 Virtual environment oluşturuluyor..."
     virtualenv "_environment"
+    FIRST_INSTALL=1
 fi
 
 # Virtual environment'ı aktive et
@@ -34,6 +36,14 @@ if [ -d "_environment" ]; then
     echo "✅ Virtual environment aktive ediliyor..."
     source "./_environment/bin/activate"
     echo "🚀 Virtual environment hazır! ($(python --version))"
+    if [ $FIRST_INSTALL -eq 1 ]; then
+        echo "📦 Gerekli paketler kuruluyor..."
+        if [ -f "packages.txt" ]; then
+            ./tools/install.sh
+        else
+            echo "❌ packages.txt dosyası bulunamadı! Gerekli paketler kurulamadı."
+        fi
+    fi
 else
     echo "❌ Virtual environment oluşturulamadı!"
     exit 1

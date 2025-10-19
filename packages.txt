@@ -1,2 +1,4 @@
 aiohttp
 asyncio
+opencv-python
+numpy
