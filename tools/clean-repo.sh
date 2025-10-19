@@ -25,3 +25,8 @@ rm -rf .git
 rm -f .gitignore
 # projedeki packages.txt, activate-env.sh and tools dışındaki her şeyi sil
 find . -maxdepth 1 ! -name '.' ! -name 'packages.txt' ! -name 'activate-env.sh' ! -name 'tools' -exec rm -rf {} +
+echo "✅ Repo temizlendi. Sadece packages.txt, activate-env.sh ve tools klasörü kaldı. Yeni git deposu oluşturuluyor..."
+git init # yeni git deposu başlat
+git add .
+git commit -m "Initial commit after cleaning repo"
+exit 0
